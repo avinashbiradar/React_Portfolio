@@ -1,37 +1,26 @@
-import  Appbar  from "../src/components/appbar/appbar"
-import Header from "../src/components/header/header"
-import Particles from "react-particles-js"
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
-import "../src/App.css"
-import "bootstrap/dist/css/bootstrap.min.css"
+import Home from "../src/components/Home/Home"
+import About from "../src/components/About/About"
+import SinglePost from "../src/components/SinglePost/SinglePost"
+import Post from "../src/components/Post/Post"
+import Project from "../src/components/Project/Project"
+import NavBar from "./components/NavBar/NavBar"
 function App() {
   return (
    <>
-   <Particles
-   className="particles-canvas"
-   params={{
-     particles:{
-       number:{
-         value:30,
-         density:{
-           enable:true,
-           value_area:900,
-         }
-       },
-       shape:{
-         type:"square",
-         stroke:{
-           width:6,
-           color:"#f9ab00"
-         }
-       }
-     }
-   }}
-   />
-    <Appbar/>
-    <Header/>
+   <BrowserRouter>
+   <NavBar/>
+   <Switch>
+   <Route component={Home} path="/" exact />
+   <Route component={About} path="/about"  />
+   <Route component={SinglePost} path="/post/:slug"/>
+   <Route component={Post} path="/Post"  />
+   <Route component={Project} path="/project" />
+   </Switch>
+   </BrowserRouter>
     </>
   );
 }
 
 export default App;
+
